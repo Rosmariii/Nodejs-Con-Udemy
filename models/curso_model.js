@@ -7,7 +7,7 @@ const cursoSchema = new mongoose.Schema({
     },
     descripcion:{
         type   : String,
-        require: folse
+        require: false
     },
     estado: {
         type    : Boolean,
