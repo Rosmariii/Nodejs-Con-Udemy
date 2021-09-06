@@ -3,8 +3,9 @@ const mongoose = require('mongoose');
 const usuarios = require('./routes/usuarios');
 const cursos = require('./routes/cursos');
 const auth = require('./routes/auth');
+const config = require('config');
 
-mongoose.connect('mongodb://localhost:27017/demo', {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true})
+mongoose.connect(config.get('configDB.HOST'), {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true})
     .then(() => console.log('conectado a MongoDB...'))
     .catch(err => console.log('no se pudo conectar con MongoDB', err));
 
