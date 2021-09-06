@@ -1,4 +1,5 @@
 const express = require('express');
+const config = require('config');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const ruta = express.Router();
@@ -14,7 +15,7 @@ ruta.post('/', (req, res) => {
                 if(!passwordValido) return res.status(400).json({error: 'ok', msj: 'Usuario o contraseña incorrecta'});
                 const jwToken = jwt.sign({
                     data: {_id: datos._id, nombre: datos.nombre, email: datos.email}
-                  }, 'secret', { expiresIn: '24h' });
+                  }, config.get('configToken.SEED'), { expiresIn: config.get('configToken.expiration') });
                 //jwt.sign({_id: datos._id, nombre: datos.nombre, email: datos.email}, 'password')
                 res.json({
                     usuario:{
