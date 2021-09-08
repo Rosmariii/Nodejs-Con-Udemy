@@ -1,11 +1,11 @@
 const express = require('express');
+const config = require('config');
 const bcrypt = require('bcrypt');
 const ruta = express.Router();
-const joi = require('joi');
+const Joi = require('joi');
+const verificarToken =  require('../middlewares/auth');
 const Usuario = require('../models/usuario_model');
 
-
-const Joi = require('joi');
 
 const schema = Joi.object({
     nombre: Joi.string()
@@ -20,7 +20,7 @@ const schema = Joi.object({
         .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } })
 })
 
-ruta.get('/', (req, res) => {
+ruta.get('/', verificarToken, (req, res) => {
     let resultado = listarUsuariosActivos();
     resultado.then(usuarios => {
         res.json(usuarios)
@@ -59,7 +59,7 @@ ruta.post('/', (req, res) =>{
     
 });
 
-ruta.put('/:email', (req, res) => {
+ruta.put('/:email', verificarToken, (req, res) => {
 
     const {error, value} = schema.validate({nombre: req.body.nombre});
 
@@ -79,7 +79,7 @@ ruta.put('/:email', (req, res) => {
    
 })
 
-ruta.delete('/:email', (req, res) => {
+ruta.delete('/:email', verificarToken, (req, res) => {
     console.log(req.params.email)
     let resultado = desactivarUsuario(req.params.email);
     resultado.then(valor => { console.log(valor)
