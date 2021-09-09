@@ -5,7 +5,7 @@ tambien podemos agregar, eliminar, ver, actualizar cusros asi como tambien elimi
 
 ## Aplicaciones:
 lo que se utilizo en este proyecto es Nodejs, express y mongoDB. para poder visualizar la base de datos debemos tener de antemano instalado mongoDB 
-[Link] https://www.mongodb.com/try/download/community y para poder tener la interfaz es descargando a travez de la siguiente pagina pagina [Link] https://robomongo.org/
+[Link]https://www.mongodb.com/try/download/community y para poder tener la interfaz es descargando a travez de la siguiente pagina pagina [Link]https://robomongo.org/
 
 
 ##Estatus del proyecto:
