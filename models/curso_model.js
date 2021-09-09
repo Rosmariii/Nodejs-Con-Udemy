@@ -1,12 +1,19 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+/*const autorSchema = new mongoose.Schema({
+    nombre      : String,
+    email       : String
+})(embebido)*/
+
 const cursoSchema = new mongoose.Schema({
     titulo:{
         type    : String,
         required: true
     },
-    autor:{
+
+    //autor       : autorSchema,(embebido)
+    autor:{ 
         type    : Schema.Types.ObjectId, ref: 'Usuario'
     },
     descripcion:{
