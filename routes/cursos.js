@@ -59,6 +59,7 @@ async function crearCurso(req){
     let curso = new Curso({
         titulo      : req.body.titulo,
         autor       : req.usuario._id,
+        //autor       : req.usuario,(embebido)
         descripcion : req.body.desc
     });
     return await curso.save();
